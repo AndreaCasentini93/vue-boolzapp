@@ -184,6 +184,9 @@ button:hover i {
     cursor: pointer;
     transition: background-color .2s;
 }
+#col-left #contacts-list .contact-box.active {
+    background-color: #E9EBEB;
+}
 #col-left #contacts-list .contact-box:hover {
     background-color: #E9EBEB;
 }
@@ -253,7 +256,7 @@ button:hover i {
 }
 #col-right #chat-room .baloon .message {
     min-width: 150px;
-    margin-right: 110px;
+    margin-right: 95px;
     margin-bottom: 12px;
     text-transform: capitalize;
     font-size: 13px;

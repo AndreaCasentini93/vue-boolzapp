@@ -62,10 +62,10 @@
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
-                            <div v-for="n in contacts.length" class="contact-box">
-                                <img src="img/avatar_1.jpg" alt="Avatar 1">
+                            <div v-for="contact, index in contacts" class="contact-box">
+                                <img :src="changeImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
-                                    <span class="contact-name">Michele</span>
+                                    <span class="contact-name">{{ contact.name }}</span>
                                     <span class="last-message">Lorem ipsum...</span>
                                 </div>
                                 <span class="date">00/00/0000 00:00:00</span>

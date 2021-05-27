@@ -172,6 +172,7 @@ button {
     height: 15%;
     padding: 10px;
     cursor: pointer;
+    transition: background-color .3s;
 }
 #col-left #contacts-list .contact-box:hover {
     background-color: #E9EBEB;

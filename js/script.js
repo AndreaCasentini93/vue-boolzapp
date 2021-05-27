@@ -1,10 +1,7 @@
 /*
-2) Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione;
-Click sul contatto mostra la conversazione del contatto cliccato;
-*//*
 3) Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde;
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
-
+*//*
 4) Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina);
 */
 
@@ -105,9 +102,11 @@ const app = new Vue(
         },
         methods: {
             getContactImage: function(contact) {
+                // Restituisce l'SRC dell'immagine nell'oggetto "contact"
                 return `img/avatar${contact.avatar}.jpg`;
             },
             getLastContactMessage: function(contact) {
+                // Restituisce l'ultimo messaggio inviato dall'utente nell'oggetto "contact"
                 if (contact.messages[contact.messages.length - 1].text.length < 30) {
                     return contact.messages[contact.messages.length - 1].text;
                 } else {
@@ -115,19 +114,32 @@ const app = new Vue(
                 }
             },
             getLastContactDate: function(contact) {
+                // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"
                 return contact.messages[contact.messages.length - 1].date;
             },
             getTextInMessages: function(message) {
+                // Restituisce il testo presente nell'oggetto "message"
                 return message.text;
             },
             getDateInMessages: function(message) {
+                // Restituisce la data  presente nell'oggetto "message"
                 return message.date;
             },
             getStatusinMessages: function(message) {
+                // Restituisce lo status presente nell'oggetto "message"
                 return message.status;
             },
             changeContact: function(index) {
-                    this.currentIndex = index;
+                // Assegna all'indice corrente il valore di "index"
+                this.currentIndex = index;
+            },
+            getCurrentImage: function() {
+                // Restituisce l'immagine corrispondente all'indice corrente 
+                return `img/avatar${this.contacts[this.currentIndex].avatar}.jpg`;
+            },
+            getLastCurrentAccess: function() {
+                // Restituisce l'ultimo accesso corrispondente all'indice corrente
+                return this.contacts[this.currentIndex].messages[this.contacts[this.currentIndex].messages.length - 1].date;
             }
         }
     }

@@ -82,13 +82,11 @@
                         <!-- COMMAND BAR -->
                         <div class="command-bar">
                             <div class="contact-box">
-                                <img src="img/avatar_1.jpg" alt="Avatar 1">
+                                <img :src="getCurrentImage()" :alt="contacts[currentIndex].name">
                                 <span class="contact-information">
-                                    <span class="contact-name">
-                                        Michele
-                                    </span>
+                                    <span class="contact-name">{{ contacts[currentIndex].name }}</span>
                                     <span class="last-access">
-                                        Ultimo accesso oggi alle 00/00/0000 00:00:00
+                                        Ultimo accesso oggi alle {{ getLastCurrentAccess() }}
                                     </span>
                                 </span>
                             </div>

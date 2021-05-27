@@ -129,6 +129,10 @@ button:hover i {
 #col-left #notifications a {
     font-size: 12px;
     color: #4f7485;
+    transition: color .2s;
+}
+#col-left #notifications a:hover {
+    color: #20353f;
 }
 
 #col-left #search-contact {

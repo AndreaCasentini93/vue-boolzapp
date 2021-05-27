@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SHORTCUT ICON -->
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
         <!-- FONT GOOGLE -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
@@ -41,21 +41,35 @@
 
                         <!-- NOTIFICATIONS -->
                         <div id="notifications">
-
+                            <i class="fas fa-bell-slash"></i>
+                            <div>
+                                <h4>Ricevi notifiche di nuovi messaggi</h4>
+                                <a href="#">Attiva notifiche desktop</a>
+                            </div>
                         </div>
                         <!-- /NOTIFICATIONS -->
 
                         <!-- SEARCH CONTACT -->
                         <div id="search-contact">
                             <div>
-                                
+                                <button type="input">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" placeholder="Cerca o inizia una nuova chat">
                             </div>
                         </div>
                         <!-- /SEARCH CONTACT -->
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
-
+                            <div v-for="n in contacts.length" class="contact-box">
+                                <img src="img/avatar_1.jpg" alt="Avatar 1">
+                                <div class="contact-information">
+                                    <span class="contact-name">Michele</span>
+                                    <span class="last-message">Lorem ipsum...</span>
+                                </div>
+                                <span class="date">00/00/0000 00:00:00</span>
+                            </div>
                         </div>
                         <!-- /CONTACT LIST -->
                     </section>
@@ -66,7 +80,7 @@
                         <!-- COMMAND BAR -->
                         <div class="command-bar">
                             <div class="contact-box">
-                                <img src="img/avatar_1.jpg" alt="Avatar Io">
+                                <img src="img/avatar_1.jpg" alt="Avatar 1">
                                 <span class="contact-information">
                                     <span class="contact-name">
                                         Michele
@@ -84,7 +98,17 @@
                         </div>
                         <!-- /COMMAND BAR -->
 
+                        <!-- CHAT ROOM -->
+                        <div id="chat-room">
 
+                        </div>
+                        <!-- /CHAT ROOM -->
+
+                        <!-- WRITE MESSAGE -->
+                        <div id="write-message">
+
+                        </div>
+                        <!-- /WRITE MESSAGE -->
                     </section>
                     <!-- /COLUMN RIGHT -->
                 </main>

@@ -13,8 +13,8 @@ Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente r
 
 const app = new Vue(
     {
-        el = "#root",
-        data = {
+        el: "#root",
+        data: {
             contacts: [
                 {
                     name: 'Michele',
@@ -101,7 +101,7 @@ const app = new Vue(
                 },
             ],
         },
-        method = {
+        method: {
 
         }
     }

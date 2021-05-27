@@ -97,10 +97,24 @@ const app = new Vue(
                     ],
                 },
             ],
+            newDate: ""
+        },
+        created: function() {
+            this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss')
         },
         methods: {
-            changeImage: function(contact) {
+            getContactImage: function(contact) {
                 return `img/avatar${contact.avatar}.jpg`;
+            },
+            getLastContactMessage: function(contact) {
+                if (contact.messages[contact.messages.length - 1].text.length < 30) {
+                    return contact.messages[contact.messages.length - 1].text;
+                } else {
+                    return contact.messages[contact.messages.length - 1].text.substring(0, 30) + "...";
+                }
+            },
+            getLastContactDate: function(contact) {
+                return contact.messages[contact.messages.length - 1].date;
             }
         }
     }

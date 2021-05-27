@@ -258,7 +258,6 @@ button:hover i {
     min-width: 150px;
     margin-right: 95px;
     margin-bottom: 12px;
-    text-transform: capitalize;
     font-size: 13px;
 }
 #col-right #chat-room .baloon .date {

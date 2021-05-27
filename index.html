@@ -9,6 +9,8 @@
         <!-- FONT GOOGLE -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+        <!-- DAYJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.5/dayjs.min.js" integrity="sha512-n6mJ6AqoohFfbgx3x7N162B/zRNs5x8uvsStlHC+LCvqwKW7oiucE07Ehatg62ybx6Vo1ctaZwm/4sSRUTSIQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- VUEJS -->
@@ -63,12 +65,12 @@
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
                             <div v-for="contact, index in contacts" class="contact-box">
-                                <img :src="changeImage(contact)" :alt="contact.name">
+                                <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>
-                                    <span class="last-message">Lorem ipsum...</span>
+                                    <span class="last-message">{{ getLastContactMessage(contact) }}</span>
                                 </div>
-                                <span class="date">00/00/0000 00:00:00</span>
+                                <span class="date">{{ getLastContactDate(contact) }}</span>
                             </div>
                         </div>
                         <!-- /CONTACT LIST -->

@@ -32,6 +32,7 @@ body {
 }
 
 #wrapper {
+    display: flex;
     width: 80%;
     height: 95%;
     margin: auto;
@@ -40,6 +41,14 @@ body {
 }
 
 /* COLUMNS LEFT */
-
+#col-left {
+    width: 40%;
+    height: 100%;
+    border-right: 1px solid black;
+}
 
 /* COLUMNS RIGHT */
+#col-right {
+    width: 60%;
+    height: 100%;
+}

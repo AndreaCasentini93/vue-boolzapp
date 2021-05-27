@@ -23,6 +23,9 @@ i {
     cursor: pointer;
     transition: transform .2s;
 }
+i.button-icon {
+    transition: color .2s;
+}
 i:not(.button-icon):hover {
     transform: scale(1.3);
 }
@@ -36,6 +39,9 @@ button {
     border: unset;
     background-color: unset;
     cursor: pointer;
+}
+button:hover i {
+    color: #4f7485;
 }
 
 .command-bar {
@@ -172,7 +178,7 @@ button {
     height: 15%;
     padding: 10px;
     cursor: pointer;
-    transition: background-color .3s;
+    transition: background-color .2s;
 }
 #col-left #contacts-list .contact-box:hover {
     background-color: #E9EBEB;

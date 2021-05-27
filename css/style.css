@@ -167,6 +167,10 @@ button {
     width: 100%;
     height: 15%;
     padding: 10px;
+    cursor: pointer;
+}
+#col-left #contacts-list .contact-box:hover {
+    background-color: #E9EBEB;
 }
 #col-left #contacts-list .contact-box:not(:last-child) {
     border-bottom: 2px solid #fafafa;
@@ -213,8 +217,30 @@ button {
 }
 
 #col-right #chat-room {
-    
+    width: 100%;
+    height: 80%;
+    background-image: url("../img/mine.jpg");
+    overflow-y: scroll;
 }
+
 #col-right #write-message {
-    
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    padding: 10px 40px;
+    background-color: #F3EEEA;
+}
+#col-right #write-message input {
+    height: 92%;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFFFF;
+    flex-grow: 1;
+}
+#col-right #write-message i {
+    font-size: 22px;
+    color: #6B7376;
 }

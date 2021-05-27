@@ -9,6 +9,54 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+img:not(.user-image) {
+    margin-right: 13px;
+}
+
+i {
+    cursor: pointer;
+}
+
+.command-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    padding: 0 10px;
+    background-color: #EAEAEA;
+}
+.command-bar i {
+    margin: 0 7px;
+    font-size: 20px;
+    color: #B1B1B1;
+}
+
+.contact-box {
+    display: flex;
+}
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-name{
+    font-size: 14px;
+}
+
+.last-access {
+    font-size: 11px;
+    color: #a1a1a1;
+}
+
+/* BACKGROUND - ROOT - WRAPPER */
 #background {
     width: 100%;
     height: 100vh;
@@ -36,7 +84,7 @@ body {
     width: 80%;
     height: 95%;
     margin: auto;
-    background-color: white;
+    background-color: #FFFFFF;
     z-index: 1;
 }
 
@@ -44,8 +92,37 @@ body {
 #col-left {
     width: 40%;
     height: 100%;
-    border-right: 1px solid black;
+    border-right: 1.5px solid #d6d6d6;
 }
+
+#col-left .comand-bar .username {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#col-left #notifications {
+    width: 100%;
+    height: 12%;
+    background-color: #8EDAFC;
+}
+
+#col-left #search-contact {
+    width: 100%;
+    height: 7%;
+    padding: 7px;
+}
+#col-left #search-contact div {
+    width: 100%;
+    height: 100%;
+}
+
+#col-left #contacts-list {
+    width: 100%;
+    height: 71%;
+    overflow-y: scroll;
+}
+
+
 
 /* COLUMNS RIGHT */
 #col-right {

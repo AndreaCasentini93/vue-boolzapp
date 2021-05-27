@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SHORTCUT ICON -->
-        <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
         <!-- FONT GOOGLE -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
-                            <div v-for="contact, index in contacts" class="contact-box">
+                            <div v-for="contact, index in contacts" class="contact-box" @click="changeContact(index)">
                                 <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>
@@ -102,9 +102,9 @@
 
                         <!-- CHAT ROOM -->
                         <div id="chat-room">
-                            <span class="baloon">
-                                <span class="message">Hai portato a spasso il cane?</span>
-                                <span class="date">00/00/0000 00:00:00</span>
+                            <span v-for="message, index in contacts[currentIndex].messages" :class="getStatusinMessages(message)" class="baloon">
+                                <span class="message">{{ getTextInMessages(message) }}</span>
+                                <span class="date">{{ getDateInMessages(message) }}</span>
                             </span>
                         </div>
                         <!-- /CHAT ROOM -->

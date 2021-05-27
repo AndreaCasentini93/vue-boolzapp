@@ -97,6 +97,7 @@ const app = new Vue(
                     ],
                 },
             ],
+            currentIndex: 0,
             newDate: ""
         },
         created: function() {
@@ -115,6 +116,18 @@ const app = new Vue(
             },
             getLastContactDate: function(contact) {
                 return contact.messages[contact.messages.length - 1].date;
+            },
+            getTextInMessages: function(message) {
+                return message.text;
+            },
+            getDateInMessages: function(message) {
+                return message.date;
+            },
+            getStatusinMessages: function(message) {
+                return message.status;
+            },
+            changeContact: function(index) {
+                    this.currentIndex = index;
             }
         }
     }

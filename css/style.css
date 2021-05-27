@@ -266,11 +266,11 @@ button:hover i {
     font-size: 10px;
     color: #c6b9bb;
 }
-#col-right #chat-room .user-baloon {
+#col-right #chat-room .sent {
     align-self: flex-end;
     background-color: #D5F9BA;
 }
-#col-right #chat-room .contact-baloon {
+#col-right #chat-room .received {
     background-color: #FFFFFF;
 }
 

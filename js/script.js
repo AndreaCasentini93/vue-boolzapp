@@ -175,16 +175,16 @@ const app = new Vue(
                 }
                 this.contacts.forEach((element) => {
                     // Se i caratteri inseriti dall'utente non compongono il nome del contatto allora il contatto avrà visibilità "false"
-                    if (searching != element.name.substring(0, this.wantedContact.length)) {
+                    if (searching == element.name.substring(0, this.wantedContact.length) || this.wantedContact.trim().length == 0) {
+                        element.visible = true;
+                    } else {
                         element.visible = false;
                     }
                 });
             },
-            contactsVisibility: function() {
-                for (i = 0; i < this.contacts.lenght; i++) {
-                    if(!this.contacts[i].visible) {
-                        return "invisible";
-                    }
+            contactsVisibility: function(contact) {
+                if(!contact.visible) {
+                    return "invisible";
                 }
             }
         }

@@ -97,9 +97,44 @@ const app = new Vue(
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
         },
         methods: {
+            addClassActive: function(index) {
+                // Aggiunge la classe "active" al contatto
+                if (this.currentIndex == index) {
+                    return "active";
+                }
+            },
+            changeContact: function(index) {
+                // Assegna al "currentIndex" il valore di "index"
+                this.currentIndex = index;
+            },
+            contactsVisibility: function(contact) {
+                // Se il contatto ha visibilità false, allora avrà "display: none;"
+                if(!contact.visible) {
+                    return "display: none;";
+                }
+            },
+            currentDay: function() {
+                // Se l'ultimo messaggio è stato inviato nella data corrente, verrà visualizzato che l'ultimo accesso è stato effettuato "oggi"
+                const messagesLength = this.contacts[this.currentIndex].messages.length - 1;
+                if (this.contacts[this.currentIndex].messages[messagesLength].date.substring(0, 10) == dayjs().format('DD/MM/YYYY')) {
+                    return "oggi ";
+                }
+            },
             getContactImage: function(contact) {
                 // Restituisce l'SRC dell'immagine nell'oggetto "contact"
                 return `img/avatar${contact.avatar}.jpg`;
+            },
+            getCurrentImage: function() {
+                // Restituisce l'immagine corrispondente al "currentIndex"
+                return `img/avatar${this.contacts[this.currentIndex].avatar}.jpg`;
+            },
+            getDateInMessages: function(message) {
+                // Restituisce la data  presente nell'oggetto "message"
+                return message.date;
+            },
+            getLastContactDate: function(contact) {
+                // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"
+                return contact.messages[contact.messages.length - 1].date;
             },
             getLastContactMessage: function(contact) {
                 // Restituisce l'ultimo messaggio inviato dall'utente nell'oggetto "contact"
@@ -109,39 +144,17 @@ const app = new Vue(
                     return contact.messages[contact.messages.length - 1].text.substring(0, 30) + "...";
                 }
             },
-            getLastContactDate: function(contact) {
-                // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"
-                return contact.messages[contact.messages.length - 1].date;
-            },
-            addClassActive: function(index) {
-                // Aggiunge la classe "active" al contatto
-                if (this.currentIndex == index) {
-                    return "active";
-                }
-            },
-            getTextInMessages: function(message) {
-                // Restituisce il testo presente nell'oggetto "message"
-                return message.text;
-            },
-            getDateInMessages: function(message) {
-                // Restituisce la data  presente nell'oggetto "message"
-                return message.date;
+            getLastCurrentAccess: function() {
+                // Restituisce l'ultimo accesso corrispondente al "currentIndex"
+                return this.contacts[this.currentIndex].messages[this.contacts[this.currentIndex].messages.length - 1].date;
             },
             getStatusinMessages: function(message) {
                 // Restituisce lo status presente nell'oggetto "message"
                 return message.status;
             },
-            changeContact: function(index) {
-                // Assegna al "currentIndex" il valore di "index"
-                this.currentIndex = index;
-            },
-            getCurrentImage: function() {
-                // Restituisce l'immagine corrispondente al "currentIndex"
-                return `img/avatar${this.contacts[this.currentIndex].avatar}.jpg`;
-            },
-            getLastCurrentAccess: function() {
-                // Restituisce l'ultimo accesso corrispondente al "currentIndex"
-                return this.contacts[this.currentIndex].messages[this.contacts[this.currentIndex].messages.length - 1].date;
+            getTextInMessages: function(message) {
+                // Restituisce il testo presente nell'oggetto "message"
+                return message.text;
             },
             enterNewUserMessage: function() {
                 if (this.newUserMessage.trim().length > 0) {
@@ -168,6 +181,12 @@ const app = new Vue(
                     }, 1000);
                 };
             },
+            firstLetterCapitalized: function() {
+                // La prima lettera scritta nell'input messaggi sarà maiuscola
+                if (this.newUserMessage.trim().length <= 1) {
+                    this.newUserMessage = this.newUserMessage.toUpperCase();
+                }
+            },
             searchContact: function() {
                 let searching = "";
                 // La prima lettera inserita dall'utente viene resa maiuscola mentre le altre minuscole
@@ -184,25 +203,6 @@ const app = new Vue(
                         element.visible = false;
                     }
                 });
-            },
-            contactsVisibility: function(contact) {
-                // Se il contatto ha visibilità false, allora avrà "display: none;"
-                if(!contact.visible) {
-                    return "display: none;";
-                }
-            },
-            firstLetterCapitalized: function() {
-                // La prima lettera scritta nell'input messaggi sarà maiuscola
-                if (this.newUserMessage.trim().length <= 1) {
-                    this.newUserMessage = this.newUserMessage.toUpperCase();
-                }
-            },
-            currentDay: function() {
-                // Se l'ultimo messaggio è stato inviato nella data corrente, verrà visualizzato che l'ultimo accesso è stato effettuato "oggi"
-                const messagesLength = this.contacts[this.currentIndex].messages.length - 1;
-                if (this.contacts[this.currentIndex].messages[messagesLength].date == dayjs().format('DD/MM/YYYY HH:mm:ss')) {
-                    return "oggi ";
-                }
             }
         }
     }

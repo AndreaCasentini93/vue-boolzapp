@@ -22,8 +22,8 @@
     </head>
     
     <body>
-        <div id="background">
-            <div id="root">
+        <div id="root">
+            <div id="background" :class="darkMode? 'dark-mode':'' ">
                 <main id="wrapper">
                     <!-- COLUMN LEFT -->
                     <section id="col-left">
@@ -34,7 +34,7 @@
                                 <span class="username">{{ userName }}</span>
                             </div>
                             <div>
-                                <i class="fas fa-circle-notch"></i>
+                                <i class="fas fa-circle-notch" @click="!darkMode? darkMode = true:darkMode = false "></i>
                                 <i class="fas fa-comment-alt"></i>
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>

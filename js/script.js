@@ -96,7 +96,8 @@ const app = new Vue(
             baloonMenu: "display: none;",
             baloonMessage: "",
             baloonDate: "",
-            infoBox: false
+            infoBox: false,
+            darkMode: false
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');

@@ -93,7 +93,7 @@ const app = new Vue(
             wantedContact: ""
         },
         created: function() {
-            this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss')
+            this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
         },
         methods: {
             getContactImage: function(contact) {
@@ -146,7 +146,7 @@ const app = new Vue(
                 if (this.newUserMessage.trim().length > 0) {
                     // Crea un nuovo oggetto "objectSent" inviato nella data corrente che ha come testo il "newUserMessage" inserito dall'utente
                     const objectSent = {
-                        date: this.newDate,
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         text: this.newUserMessage,
                         status: 'sent'
                     };
@@ -158,7 +158,7 @@ const app = new Vue(
                     setTimeout(() => {
                         // Crea un nuovo oggetto "objectReceived" inviato nella data corrente che ha come testo il "Ok!" inserito dall'utente
                         const objectReceived = {
-                            date: this.newDate,
+                            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                             text: "Ok!",
                             status: 'received'
                         };
@@ -199,7 +199,7 @@ const app = new Vue(
             currentDay: function() {
                 // Se l'ultimo messaggio è stato inviato nella data corrente, verrà visualizzato che l'ultimo accesso è stato effettuato "oggi"
                 const messagesLength = this.contacts[this.currentIndex].messages.length - 1;
-                if (this.contacts[this.currentIndex].messages[messagesLength].date == this.newDate) {
+                if (this.contacts[this.currentIndex].messages[messagesLength].date == dayjs().format('DD/MM/YYYY HH:mm:ss')) {
                     return "oggi ";
                 }
             }

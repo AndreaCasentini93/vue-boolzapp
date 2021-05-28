@@ -255,7 +255,6 @@ button:hover i {
     border-radius: 8px;
     margin: 5px 0;
     font-size: 13px;
-    background-color: #FFFFFF;
 }
 #col-right #chat-room .baloon .message {
     min-width: 150px;

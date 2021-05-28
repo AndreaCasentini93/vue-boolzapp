@@ -64,7 +64,7 @@
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
-                            <div v-for="contact, index in contacts" :class="contactsVisibility(contact)" class="contact-box" @click="changeContact(index)">
+                            <div v-for="contact, index in contacts" :class="addClassActive(index)" :class="contactsVisibility(contact)" class="contact-box" @click="changeContact(index)">
                                 <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>

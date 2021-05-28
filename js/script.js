@@ -112,6 +112,11 @@ const app = new Vue(
                 // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"
                 return contact.messages[contact.messages.length - 1].date;
             },
+            addClassActive: function(index) {
+                if (this.currentIndex == index) {
+                    return "active";
+                }
+            },
             getTextInMessages: function(message) {
                 // Restituisce il testo presente nell'oggetto "message"
                 return message.text;
@@ -189,7 +194,7 @@ const app = new Vue(
                 if (this.newUserMessage.trim().length <= 1) {
                     this.newUserMessage = this.newUserMessage.toUpperCase();
                 }
-            }
+            },
         }
     }
 )

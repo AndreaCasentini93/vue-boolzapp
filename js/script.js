@@ -168,7 +168,7 @@ const app = new Vue(
             searchContact: function() {
                 let searching = "";
                 // La prima lettera inserita dall'utente viene resa maiuscola mentre le altre minuscole
-                if (this.wantedContact.length == 1) {
+                if (this.wantedContact.trim().length <= 1) {
                     searching = this.wantedContact.toUpperCase();
                 } else {
                     searching = this.wantedContact[0].toUpperCase() + this.wantedContact.substring(1).toLowerCase();

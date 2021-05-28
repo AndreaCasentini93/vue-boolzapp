@@ -100,9 +100,14 @@
 
                         <!-- CHAT ROOM -->
                         <div id="chat-room">
-                            <span v-for="message, index in contacts[currentIndex].messages" :class="getStatusinMessages(message)" class="baloon">
+                            <span v-for="message, index in contacts[currentIndex].messages" :class="getStatusinMessages(message)" class="baloon p-relative">
                                 <span class="message">{{ getTextInMessages(message) }}</span>
                                 <span class="date">{{ getDateInMessages(message) }}</span>
+                                <i class="fas fa-chevron-down" @click="clickOnBallonMenu(index)"></i>
+                                <ul v-if="currentMessageIndex == index" :style="baloonMenu" class="baloon-menu">
+                                    <li>Message info</li>
+                                    <li @click="deleteMessage(index)">Delete message</li>
+                                </ul>
                             </span>
                         </div>
                         <!-- /CHAT ROOM -->

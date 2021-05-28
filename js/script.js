@@ -89,9 +89,11 @@ const app = new Vue(
             ],
             userName: "Andrea Casentini",
             currentIndex: 0,
+            currentMessageIndex: 0,
             newDate: "",
             newUserMessage: "",
-            wantedContact: ""
+            wantedContact: "",
+            baloonMenu: "display: none;",
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -107,6 +109,16 @@ const app = new Vue(
                 // Assegna al "currentIndex" il valore di "index"
                 this.currentIndex = index;
             },
+            clickOnBallonMenu: function(index) {
+                // Apre il menu a tendina cliccando sull'icona
+                if (this.baloonMenu == "display: none;") {
+                    this.currentMessageIndex = index;
+                    this.baloonMenu = "display: inline-block;";
+                } else {
+                    this.currentMessageIndex = 0;
+                    this.baloonMenu = "display: none;";
+                }
+            },
             contactsVisibility: function(contact) {
                 // Se il contatto ha visibilità false, allora avrà "display: none;"
                 if(!contact.visible) {
@@ -119,6 +131,10 @@ const app = new Vue(
                 if (this.contacts[this.currentIndex].messages[messagesLength].date.substring(0, 10) == dayjs().format('DD/MM/YYYY')) {
                     return "oggi ";
                 }
+            },
+            deleteMessage: function(index) {
+                // Elimina dall'array "messages" il messaggio selezionato
+                this.contacts[this.currentIndex].messages.splice(index, 1)
             },
             getContactImage: function(contact) {
                 // Restituisce l'SRC dell'immagine nell'oggetto "contact"

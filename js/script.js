@@ -182,6 +182,11 @@ const app = new Vue(
                 if(!contact.visible) {
                     return "invisible";
                 }
+            },
+            firstLetterCapitalized: function() {
+                if (this.newUserMessage.trim().length <= 1) {
+                    this.newUserMessage = this.newUserMessage.toUpperCase();
+                }
             }
         }
     }

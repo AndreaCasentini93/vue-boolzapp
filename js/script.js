@@ -135,6 +135,9 @@ const app = new Vue(
             deleteMessage: function(index) {
                 // Elimina dall'array "messages" il messaggio selezionato
                 this.contacts[this.currentIndex].messages.splice(index, 1)
+                // Rimuove il menu a tendina dai baloon
+                this.currentMessageIndex = 0;
+                this.baloonMenu = "display: none;";
             },
             getContactImage: function(contact) {
                 // Restituisce l'SRC dell'immagine nell'oggetto "contact"

@@ -87,6 +87,7 @@ const app = new Vue(
                     ],
                 },
             ],
+            userName: "Andrea Casentini",
             currentIndex: 0,
             newDate: "",
             newUserMessage: "",

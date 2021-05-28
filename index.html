@@ -57,14 +57,14 @@
                                 <button type="input">
                                     <i class="fas fa-search button-icon"></i>
                                 </button>
-                                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                <input v-model="wantedContact" type="text" placeholder="Cerca o inizia una nuova chat" @keyup="searchContact()">
                             </div>
                         </div>
                         <!-- /SEARCH CONTACT -->
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list">
-                            <div v-for="contact, index in contacts" class="contact-box" @click="changeContact(index)">
+                            <div v-for="contact, index in contacts" :class="contactsVisibility()" class="contact-box" @click="changeContact(index)">
                                 <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>

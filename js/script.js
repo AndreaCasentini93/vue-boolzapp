@@ -93,7 +93,8 @@ const app = new Vue(
             ],
             currentIndex: 0,
             newDate: "",
-            newUserMessage: ""
+            newUserMessage: "",
+            wantedContact: ""
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss')
@@ -163,6 +164,28 @@ const app = new Vue(
                         this.contacts[this.currentIndex].messages.push(objectReceived);
                     }, 1000);
                 };
+            },
+            searchContact: function() {
+                let searching = "";
+                // La prima lettera inserita dall'utente viene resa maiuscola mentre le altre minuscole
+                if (this.wantedContact.length == 1) {
+                    searching = this.wantedContact.toUpperCase();
+                } else {
+                    searching = this.wantedContact[0].toUpperCase() + this.wantedContact.substring(1).toLowerCase();
+                }
+                this.contacts.forEach((element) => {
+                    // Se i caratteri inseriti dall'utente non compongono il nome del contatto allora il contatto avrà visibilità "false"
+                    if (searching != element.name.substring(0, this.wantedContact.length)) {
+                        element.visible = false;
+                    }
+                });
+            },
+            contactsVisibility: function() {
+                for (i = 0; i < this.contacts.lenght; i++) {
+                    if(!this.contacts[i].visible) {
+                        return "invisible";
+                    }
+                }
             }
         }
     }

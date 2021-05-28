@@ -94,8 +94,8 @@ const app = new Vue(
             newUserMessage: "",
             wantedContact: "",
             baloonMenu: "display: none;",
-            lastMessage: "",
-            lastDate: "",
+            baloonMessage: "",
+            baloonDate: "",
             infoBox: false
         },
         created: function() {
@@ -152,10 +152,12 @@ const app = new Vue(
             },
             getDateInMessages: function(message) {
                 // Restituisce la data  presente nell'oggetto "message"
-                this.lastDate = message.date;
                 return message.date;
             },
-            getInfoBox: function() {
+            getInfoBox: function(message) {
+                // Assegna a "baloonMessage" e "baloonDate" rispettivamente il messaggio e la data presenti nel baloon corrente
+                this.baloonMessage = message.text;
+                this.baloonDate = message.date;
                 // Se il menu a tendina del baloon è aperto e viene chiamata la funzione, "infoBox" diventa "true"
                 if (this.baloonMenu != "display: none;") {
                     this.infoBox = true;
@@ -186,7 +188,6 @@ const app = new Vue(
             },
             getTextInMessages: function(message) {
                 // Restituisce il testo presente nell'oggetto "message"
-                this.lastMessage = message.text;
                 return message.text;
             },
             enterNewUserMessage: function() {

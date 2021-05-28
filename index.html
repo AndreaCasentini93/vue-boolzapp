@@ -73,8 +73,8 @@
                                 <span class="date">{{ getLastContactDate(contact) }}</span>
                             </div>
                             <ul v-if="infoBox" class="info-box p-relative">
-                                <li><strong>Ultimo messaggio:</strong>{{ lastMessage }}</li>
-                                <li><strong>Ora:</strong>{{ lastDate }}</li>
+                                <li><strong>Messaggio:</strong>{{ baloonMessage }}</li>
+                                <li><strong>Ora:</strong>{{ baloonDate }}</li>
                                 <i class="fas fa-times" @click="infoBox = false"></i>
                             </ul>
                         </div>
@@ -110,7 +110,7 @@
                                 <span class="date">{{ getDateInMessages(message) }}</span>
                                 <i class="fas fa-chevron-down" @click="clickOnBallonMenu(index)"></i>
                                 <ul v-if="currentMessageIndex == index" :style="baloonMenu" class="baloon-menu">
-                                    <li @click="getInfoBox()">Message info</li>
+                                    <li @click="getInfoBox(message)">Message info</li>
                                     <li @click="deleteMessage(index)">Delete message</li>
                                 </ul>
                             </span>

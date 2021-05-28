@@ -179,11 +179,13 @@ const app = new Vue(
                 });
             },
             contactsVisibility: function(contact) {
+                // Se il contatto ha visibilità false, allora riceverà la classe "invisible"
                 if(!contact.visible) {
                     return "invisible";
                 }
             },
             firstLetterCapitalized: function() {
+                // La prima lettera scritta nell'input messaggi sarà maiuscola
                 if (this.newUserMessage.trim().length <= 1) {
                     this.newUserMessage = this.newUserMessage.toUpperCase();
                 }

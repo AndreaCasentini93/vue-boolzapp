@@ -94,6 +94,9 @@ const app = new Vue(
             newUserMessage: "",
             wantedContact: "",
             baloonMenu: "display: none;",
+            lastMessage: "",
+            lastDate: "",
+            infoBox: false
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -149,7 +152,17 @@ const app = new Vue(
             },
             getDateInMessages: function(message) {
                 // Restituisce la data  presente nell'oggetto "message"
+                this.lastDate = message.date;
                 return message.date;
+            },
+            getInfoBox: function() {
+                // Se il menu a tendina del baloon è aperto e viene chiamata la funzione, "infoBox" diventa "true"
+                if (this.baloonMenu != "display: none;") {
+                    this.infoBox = true;
+                } 
+                // Rimuove il menu a tendina dai baloon
+                this.currentMessageIndex = 0;
+                this.baloonMenu = "display: none;";
             },
             getLastContactDate: function(contact) {
                 // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"
@@ -173,6 +186,7 @@ const app = new Vue(
             },
             getTextInMessages: function(message) {
                 // Restituisce il testo presente nell'oggetto "message"
+                this.lastMessage = message.text;
                 return message.text;
             },
             enterNewUserMessage: function() {

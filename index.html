@@ -63,8 +63,8 @@
                         <!-- /SEARCH CONTACT -->
 
                         <!-- CONTACT LIST -->
-                        <div id="contacts-list">
-                            <div v-for="contact, index in contacts" :class="addClassActive(index)" :style="contactsVisibility(contact)" class="contact-box" @click="changeContact(index)">
+                        <div id="contacts-list" class="p-relative">
+                            <div v-if="!infoBox" v-for="contact, index in contacts" :class="addClassActive(index)" :style="contactsVisibility(contact)" class="contact-box" @click="changeContact(index)">
                                 <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>
@@ -72,6 +72,11 @@
                                 </div>
                                 <span class="date">{{ getLastContactDate(contact) }}</span>
                             </div>
+                            <ul v-if="infoBox" class="info-box p-relative">
+                                <li><strong>Ultimo messaggio:</strong>{{ lastMessage }}</li>
+                                <li><strong>Ora:</strong>{{ lastDate }}</li>
+                                <i class="fas fa-times" @click="infoBox = false"></i>
+                            </ul>
                         </div>
                         <!-- /CONTACT LIST -->
                     </section>
@@ -105,7 +110,7 @@
                                 <span class="date">{{ getDateInMessages(message) }}</span>
                                 <i class="fas fa-chevron-down" @click="clickOnBallonMenu(index)"></i>
                                 <ul v-if="currentMessageIndex == index" :style="baloonMenu" class="baloon-menu">
-                                    <li>Message info</li>
+                                    <li @click="getInfoBox()">Message info</li>
                                     <li @click="deleteMessage(index)">Delete message</li>
                                 </ul>
                             </span>

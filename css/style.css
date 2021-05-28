@@ -219,6 +219,38 @@ button:hover i {
     font-size: 12px;
     color: #c6b9bb;
 }
+#col-left #contacts-list .info-box {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    min-width: 60%;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #4f7485;
+    background-color: #E9EBEB;
+    overflow: hidden;
+}
+#col-left #contacts-list .info-box .fas.fa-times {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 18px
+    color: #4f7485;
+}
+#col-left #contacts-list .info-box li {
+    line-height: 15px;
+    margin: 35px 0;
+}
+#col-left #contacts-list .info-box strong {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #000000;
+}
 
 /* COLUMN RIGHT */
 #col-right {

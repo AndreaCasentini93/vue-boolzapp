@@ -1,7 +1,4 @@
 /*
-3) Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde;
-Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
-*//*
 4) Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina);
 */
 
@@ -95,7 +92,8 @@ const app = new Vue(
                 },
             ],
             currentIndex: 0,
-            newDate: ""
+            newDate: "",
+            newUserMessage: ""
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss')
@@ -130,16 +128,41 @@ const app = new Vue(
                 return message.status;
             },
             changeContact: function(index) {
-                // Assegna all'indice corrente il valore di "index"
+                // Assegna al "currentIndex" il valore di "index"
                 this.currentIndex = index;
             },
             getCurrentImage: function() {
-                // Restituisce l'immagine corrispondente all'indice corrente 
+                // Restituisce l'immagine corrispondente al "currentIndex"
                 return `img/avatar${this.contacts[this.currentIndex].avatar}.jpg`;
             },
             getLastCurrentAccess: function() {
-                // Restituisce l'ultimo accesso corrispondente all'indice corrente
+                // Restituisce l'ultimo accesso corrispondente al "currentIndex"
                 return this.contacts[this.currentIndex].messages[this.contacts[this.currentIndex].messages.length - 1].date;
+            },
+            enterNewUserMessage: function() {
+                if (this.newUserMessage.trim().length > 0) {
+                    // Crea un nuovo oggetto "objectSent" inviato nella data corrente che ha come testo il "newUserMessage" inserito dall'utente
+                    const objectSent = {
+                        date: this.newDate,
+                        text: this.newUserMessage,
+                        status: 'sent'
+                    };
+                    // Aggiunge il nuovo oggetto all'array "messages" in "contacts"
+                    this.contacts[this.currentIndex].messages.push(objectSent);
+                    // Pulisce il campo di input
+                    this.newUserMessage = "";
+                    // Fa partire una risposta di "ok" da parte del contatto un secondo dopo l'invio
+                    setTimeout(() => {
+                        // Crea un nuovo oggetto "objectReceived" inviato nella data corrente che ha come testo il "Ok!" inserito dall'utente
+                        const objectReceived = {
+                            date: this.newDate,
+                            text: "Ok!",
+                            status: 'received'
+                        };
+                        // Aggiunge il nuovo oggetto all'array "messages" in "contacts"
+                        this.contacts[this.currentIndex].messages.push(objectReceived);
+                    }, 1000);
+                };
             }
         }
     }

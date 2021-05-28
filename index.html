@@ -110,7 +110,7 @@
                         <!-- WRITE MESSAGE -->
                         <div id="write-message">
                             <i class="far fa-smile"></i>
-                            <input type="text" placeholder="Scrivi un messeggio">
+                            <input v-model="newUserMessage" type="text" placeholder="Scrivi un messeggio" @keyup.enter="enterNewUserMessage()">
                             <i class="fas fa-microphone"></i>
                         </div>
                         <!-- /WRITE MESSAGE -->

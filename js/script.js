@@ -113,6 +113,7 @@ const app = new Vue(
                 return contact.messages[contact.messages.length - 1].date;
             },
             addClassActive: function(index) {
+                // Aggiunge la classe "active" al contatto
                 if (this.currentIndex == index) {
                     return "active";
                 }
@@ -184,7 +185,7 @@ const app = new Vue(
                 });
             },
             contactsVisibility: function(contact) {
-                // Se il contatto ha visibilità false, allora riceverà la classe "invisible"
+                // Se il contatto ha visibilità false, allora avrà "display: none;"
                 if(!contact.visible) {
                     return "display: none;";
                 }
@@ -195,6 +196,13 @@ const app = new Vue(
                     this.newUserMessage = this.newUserMessage.toUpperCase();
                 }
             },
+            currentDay: function() {
+                // Se l'ultimo messaggio è stato inviato nella data corrente, verrà visualizzato che l'ultimo accesso è stato effettuato "oggi"
+                const messagesLength = this.contacts[this.currentIndex].messages.length - 1;
+                if (this.contacts[this.currentIndex].messages[messagesLength].date == this.newDate) {
+                    return "oggi ";
+                }
+            }
         }
     }
 )

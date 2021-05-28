@@ -186,7 +186,7 @@ const app = new Vue(
             contactsVisibility: function(contact) {
                 // Se il contatto ha visibilità false, allora riceverà la classe "invisible"
                 if(!contact.visible) {
-                    return "invisible";
+                    return "display: none;";
                 }
             },
             firstLetterCapitalized: function() {

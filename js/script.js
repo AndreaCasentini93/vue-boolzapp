@@ -87,17 +87,17 @@ const app = new Vue(
                     ],
                 },
             ],
-            userName: "Andrea Casentini",
-            currentIndex: 0,
-            currentMessageIndex: 0,
-            newDate: "",
-            newUserMessage: "",
-            wantedContact: "",
-            baloonMenu: "display: none;",
+            baloonMenu: false,
             baloonMessage: "",
             baloonDate: "",
+            currentIndex: 0,
+            currentMessageIndex: 0,
+            darkMode: false,
             infoBox: false,
-            darkMode: false
+            newDate: "",
+            newUserMessage: "",
+            userName: "Andrea",
+            wantedContact: ""
         },
         created: function() {
             this.newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -115,18 +115,12 @@ const app = new Vue(
             },
             clickOnBallonMenu: function(index) {
                 // Apre il menu a tendina cliccando sull'icona
-                if (this.baloonMenu == "display: none;") {
+                if (!this.baloonMenu) {
                     this.currentMessageIndex = index;
-                    this.baloonMenu = "display: inline-block;";
+                    this.baloonMenu = true;
                 } else {
                     this.currentMessageIndex = 0;
-                    this.baloonMenu = "display: none;";
-                }
-            },
-            contactsVisibility: function(contact) {
-                // Se il contatto ha visibilità false, allora avrà "display: none;"
-                if(!contact.visible) {
-                    return "display: none;";
+                    this.baloonMenu = false;
                 }
             },
             currentDay: function() {
@@ -141,7 +135,7 @@ const app = new Vue(
                 this.contacts[this.currentIndex].messages.splice(index, 1)
                 // Rimuove il menu a tendina dai baloon
                 this.currentMessageIndex = 0;
-                this.baloonMenu = "display: none;";
+                this.baloonMenu = false;
             },
             getContactImage: function(contact) {
                 // Restituisce l'SRC dell'immagine nell'oggetto "contact"
@@ -160,12 +154,12 @@ const app = new Vue(
                 this.baloonMessage = message.text;
                 this.baloonDate = message.date;
                 // Se il menu a tendina del baloon è aperto e viene chiamata la funzione, "infoBox" diventa "true"
-                if (this.baloonMenu != "display: none;") {
+                if (this.baloonMenu != false) {
                     this.infoBox = true;
                 } 
                 // Rimuove il menu a tendina dai baloon
                 this.currentMessageIndex = 0;
-                this.baloonMenu = "display: none;";
+                this.baloonMenu = false;
             },
             getLastContactDate: function(contact) {
                 // Restituisce la data dell'ultimo messaggio inviato dall'utente nell'oggetto "contact"

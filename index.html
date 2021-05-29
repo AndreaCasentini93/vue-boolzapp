@@ -64,7 +64,7 @@
 
                         <!-- CONTACT LIST -->
                         <div id="contacts-list" class="p-relative">
-                            <div v-if="!infoBox" v-for="contact, index in contacts" :class="addClassActive(index)" :style="contactsVisibility(contact)" class="contact-box" @click="changeContact(index)">
+                            <div v-if="!infoBox && contact.visible" v-for="contact, index in contacts" :class="addClassActive(index)" class="contact-box" @click="changeContact(index)">
                                 <img :src="getContactImage(contact)" :alt="contact.name">
                                 <div class="contact-information">
                                     <span class="contact-name">{{ contact.name }}</span>
@@ -109,7 +109,7 @@
                                 <span class="message">{{ getTextInMessages(message) }}</span>
                                 <span class="date">{{ getDateInMessages(message) }}</span>
                                 <i class="fas fa-chevron-down" @click="clickOnBallonMenu(index)"></i>
-                                <ul v-if="currentMessageIndex == index" :style="baloonMenu" class="baloon-menu">
+                                <ul v-if="currentMessageIndex == index && baloonMenu" class="baloon-menu">
                                     <li @click="getInfoBox(message)">Message info</li>
                                     <li @click="deleteMessage(index)">Delete message</li>
                                 </ul>

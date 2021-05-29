@@ -79,9 +79,6 @@ button:hover i {
     height: 100%;
     background-image: linear-gradient(#DDDBD1, #D3DBDB);
 }
-#background.dark-mode {
-    filter: invert(85%);
-}
 #background::before {
     display: block;
     position: absolute;
@@ -367,4 +364,18 @@ button:hover i {
 #col-right #write-message i {
     font-size: 22px;
     color: #6B7376;
+}
+
+/* DARCK MODE */
+#background.dark-mode {
+    filter: invert(85%);
+}
+#background.dark-mode img {
+    filter: invert(100%);
+}
+#background.dark-mode #notifications {
+    background-color: #eba289;
+}
+#background.dark-mode #notifications i {
+    color: #eba289;
 }
